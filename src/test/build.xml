@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<project name="coverage" xmlns:jacoco="antlib:org.jacoco.ant" >
+    <!--Jacoco的安装路径-->
+  <property name="jacocoantPath" value="C:/Users/fzj62610/Downloads/jacoco-0.8.5/lib"/>
+  <!--最终生成.exec文件的路径，Jacoco就是根据这个文件生成最终的报告的-->
+  <property name="jacocoexecPath" value="D:/Java/jacoco/target/jacoco.exec"/>
+    <!--生成覆盖率报告的路径-->
+  <property name="reportfolderPath" value="D:/Java/jacoco/target/"/>
+  <!--远程tomcat服务的ip地址-->
+  <property name="server_ip" value="127.0.0.1"/>
+  <!--前面配置的远程tomcat服务打开的端口，要跟上面配置的一样-->
+  <property name="server_port" value="8080"/>
+  <!--源代码路径可以包含多个源代码-->
+  <property name="webSrcpath" value="C:/workspaces/springdemo/src/main/java/" />
+	<!--<property name="webSrcpath" value="/home/work/zj/adp-feed-access-web/src/main/java/" />
+  <property name="businessSrcpath" value="/home/work/zj/adp-feed-access-business-delivery/src/main/java/"/>
+  <property name="commonSrcpath" value="/home/work/zj/adp-feed-access-business-common/src/main/java/"/>
+  <property name="uasSrcpath" value="/home/work/zj/uas-pbrpc4j/src/main/java/"/>-->
+  <!--.class文件路径可以包含多个-->
+	<!--<property name="webClasspath" value="/home/work/local/adp_launch_feed_1/ROOT/WEB-INF/classes/"/>
+  <property name="businessClasspath" value="/home/work/local/adp_launch_feed_1/ROOT/WEB-INF/lib/adp-feed-access-business-delivery/"/>
+  <property name="commonClasspath" value="/home/work/local/adp_launch_feed_1/ROOT/WEB-INF/lib/adp-feed-access-business-common/"/>
+  <property name="uasClasspath" value="/home/work/local/adp_launch_feed_1/ROOT/WEB-INF/lib/uas-pbrpc4j/"/>-->
+
+  <!--让ant知道去哪儿找Jacoco-->
+	  <!--<taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+      <classpath path="${jacocoantPath}" />
+  </taskdef>-->
+
+  <!--dump任务:
+      根据前面配置的ip地址，和端口号，
+      访问目标tomcat服务，并生成.exec文件。-->
+
+  <target name="dump">
+      <jacoco:dump address="${server_ip}" reset="false" destfile="${jacocoexecPath}" port="${server_port}" append="true"/>
+  </target>
+  
+  <!--jacoco任务:
+      根据前面配置的源代码路径和.class文件路径，
+      根据dump后，生成的.exec文件，生成最终的html覆盖率报告。-->
+
+  <target name="report">
+      <delete dir="${reportfolderPath}" />
+      <mkdir dir="${reportfolderPath}" />
+      
+      <jacoco:report>
+          <executiondata>
+              <file file="${jacocoexecPath}" />
+          </executiondata>
+              
+          <structure name="JaCoCo Report">
+              <group name="Launch related">           
+                  <classfiles>
+                      <fileset dir="${webClasspath}" />
+                  </classfiles>
+                  <sourcefiles encoding="gbk">
+                      <fileset dir="${webSrcpath}" />
+                  </sourcefiles>
+              </group>
+              <group name="Business related">           
+                  <classfiles>
+                      <fileset dir="${businessClasspath}" />
+                  </classfiles>
+                  <sourcefiles encoding="gbk">
+                      <fileset dir="${businessSrcpath}" />
+                  </sourcefiles>
+              </group>
+              <group name="Common related">           
+                  <classfiles>
+                      <fileset dir="${commonClasspath}" />
+                  </classfiles>
+                  <sourcefiles encoding="gbk">
+                      <fileset dir="${commonSrcpath}" />
+                  </sourcefiles>
+              </group>
+          </structure>
+
+          <html destdir="${reportfolderPath}" encoding="utf-8" />         
+      </jacoco:report>
+  </target>
+</project>
