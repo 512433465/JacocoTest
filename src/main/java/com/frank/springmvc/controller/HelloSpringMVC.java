@@ -20,7 +20,7 @@ public class HelloSpringMVC {
     }  
     
     public void HelloWorld2(){  
-    	 System.out.println("HelloWorld2");
+    	 System.out.println("HelloWorld222222");
     } 
     
  
