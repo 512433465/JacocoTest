@@ -25,6 +25,7 @@ public class HelloSpringMVC {
     
  
     public void HelloWorld4(){  
-   	 System.out.println("HelloWorld2");
+   	 System.out.println("HelloWorld666666666");
+     System.out.println("HelloWorld666666666");
    } 
 }
