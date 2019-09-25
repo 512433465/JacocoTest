@@ -17,10 +17,10 @@ public class HelloSpringMVC {
     public String HelloWorld(Model model){
         model.addAttribute("message","Hello World!!!spring2222222222222");  
         return "hello2";  
-    }  
-    
+    }
+    @RequestMapping("/hello1")
     public void HelloWorld2(){  
-    	 System.out.println("HelloWorld222222");
+    	 System.out.println("HelloWorld1111111111");
     } 
     
  
