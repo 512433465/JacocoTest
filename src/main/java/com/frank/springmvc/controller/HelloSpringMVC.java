@@ -15,7 +15,7 @@ public class HelloSpringMVC {
     }
     @RequestMapping("/hello2")
     public String HelloWorld(Model model){
-        model.addAttribute("message","Hello World!!!spring");  
+        model.addAttribute("message","Hello World!!!spring2222222222222");  
         return "hello2";  
     }  
     
