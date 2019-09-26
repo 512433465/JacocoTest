@@ -19,13 +19,15 @@ public class HelloSpringMVC {
         return "hello2";  
     }
     @RequestMapping("/hello1")
-    public void HelloWorld2(){  
+    public void HelloWorld2(Model model){
     	 System.out.println("HelloWorld1111111111");
-    } 
-    
- 
-    public void HelloWorld4(){  
-   	 System.out.println("HelloWorld666666666");
-     System.out.println("HelloWorld666666666");
+         model.addAttribute("message","Hello World!!!HelloWorld1111111111");
+    }
+
+    @RequestMapping("/hello5")
+    public void HelloWorld5(Model model){
+   	    System.out.println("HelloWorld55555");
+        System.out.println("HelloWorld55555");
+        model.addAttribute("message","Hello World!!!HelloWorld55555");
    } 
 }

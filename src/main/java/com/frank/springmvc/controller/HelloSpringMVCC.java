@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller 
 public class HelloSpringMVCC {
     @RequestMapping("/hello3")  
-    public String test() {  
+    public String test(Model model) {
+        model.addAttribute("message","Hello World!!!test3");
         System.out.println("test3"); 
         return "hello3"; 
     }
