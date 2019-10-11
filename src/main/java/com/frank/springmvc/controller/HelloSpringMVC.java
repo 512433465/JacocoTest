@@ -19,7 +19,7 @@ public class HelloSpringMVC {
         return "hello2";  
     }
     @RequestMapping("/hello1")
-    public void HelloWorld2(Model model){
+    public String HelloWorld2(Model model){
     	 System.out.println("HelloWorld1111111111");
          model.addAttribute("message","Hello World!!!HelloWorld1111111111");
          return "hello1";
