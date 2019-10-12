@@ -26,9 +26,10 @@ public class HelloSpringMVC {
     }
 
     @RequestMapping("/hello5")
-    public void HelloWorld5(Model model){
+    public String HelloWorld5(Model model){
    	    System.out.println("HelloWorld55555");
         System.out.println("HelloWorld55555");
         model.addAttribute("message","Hello World!!!HelloWorld55555");
+        return "hello";
    } 
 }
