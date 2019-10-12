@@ -22,7 +22,7 @@ public class HelloSpringMVC {
     public String HelloWorld2(Model model){
     	 System.out.println("HelloWorld1111111111");
          model.addAttribute("message","Hello World!!!HelloWorld1111111111");
-         return "hello1";
+         return "hello";
     }
 
     @RequestMapping("/hello5")
