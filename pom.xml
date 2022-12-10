@@ -91,6 +91,6 @@
 		</plugins>
 	</build>
   <properties>
-  	<springVersion>5.3.18</springVersion>
+  	<springVersion>6.0.0</springVersion>
   </properties>
   </project>
